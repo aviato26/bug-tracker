@@ -1,25 +1,49 @@
-import logo from './logo.svg';
+
+import { Component } from 'react';
+import { BrowserRouter , Route, Routes} from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import Signin from './components/Signin/signin.js';
+import MainHomePage from './components/HomePage/mainHomePage.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  constructor()
+  {
+    super();
+    this.state = {
+      tickets:
+      [
+        {priority: 'High', status: 'Open', type: 'Error', AssignedBy: 'Stan'},
+        {priority: 'High', status: 'Open', type: 'Error', AssignedBy: 'Stan'},
+        {priority: 'High', status: 'In-Progress', type: 'Task', AssignedBy: 'Stan'},
+        {priority: 'Low', status: 'New', type: 'Sub-Task', AssignedBy: 'Mick'}
+      ],
+
+      users:
+      [
+        { UserName: 'me', Email: 'm@e.com', Role: 'Admin' },
+        { UserName: 'ted', Email: 'ted@tex.com', Role: 'Admin' },
+        { UserName: 'franklin', Email: 'f@franklin.com', Role: 'Developer' },
+        { UserName: 'jackson', Email: 'jack@jack.com', Role: 'Developer' },
+        { UserName: 'jed', Email: 'jed@jeddy.com', Role: 'Developer' },
+        { UserName: 'dylan', Email: 'dylie@dylie.com', Role: 'Demo' },
+        { UserName: 'bruce', Email: 'brucey@b.com', Role: 'Demo' },
+        { UserName: 'jasper', Email: 'j@j.com', Role: 'Developer' }
+      ]
+    }
+  }
+
+  render()
+  {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainHomePage ticket={this.state.tickets} users={this.state.users} />} />
+          <Route path="/" element={<Signin />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
