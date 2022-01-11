@@ -65,7 +65,6 @@ const TicketStatus = (props) =>
   let open = 0;
   let inProgress = 0;
   let resolved = 0;
-  console.log(props)
 
   for(let i = 0; i < props.tickets.length; i++)
   {

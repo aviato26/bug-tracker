@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const ManageProjectUsers = () =>
+const ManageProjectUsers = (props) =>
 {
   return(
     <div>
-      <button>Manage Project Users</button>
+      <button onClick={props.switchDashboardComponents.bind(this, 'Manage-Project-Users')} >Manage Project Users</button>
     </div>
   )
 }

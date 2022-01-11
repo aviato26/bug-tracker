@@ -29,8 +29,18 @@ class App extends Component{
         { UserName: 'dylan', Email: 'dylie@dylie.com', Role: 'Demo' },
         { UserName: 'bruce', Email: 'brucey@b.com', Role: 'Demo' },
         { UserName: 'jasper', Email: 'j@j.com', Role: 'Developer' }
-      ]
+      ],
+
+      currentDashBoardComponent: 'Dashboard-Home'
     }
+
+    this.switchDashboardComponents = this.switchDashboardComponents.bind(this);
+  }
+
+  switchDashboardComponents(currentComponent)
+  {
+    //console.log(`we b clickin dis button ${button}`, e.target)
+    this.setState({ currentDashBoardComponent: currentComponent })
   }
 
   render()
@@ -38,7 +48,7 @@ class App extends Component{
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainHomePage ticket={this.state.tickets} users={this.state.users} />} />
+          <Route path="/" element={<MainHomePage ticket={this.state.tickets} users={this.state.users} switchDashboardComponents={this.switchDashboardComponents} currentDashboardComponent={this.state.currentDashBoardComponent}/>} />
           <Route path="/" element={<Signin />} />
         </Routes>
       </BrowserRouter>
