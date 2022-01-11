@@ -204,3 +204,12 @@ td, th {
     width: 75%;
   }
 }
+
+@media screen and (min-width: 2000px) {
+
+  canvas
+  {
+    width: 75% !important;
+  }
+
+}

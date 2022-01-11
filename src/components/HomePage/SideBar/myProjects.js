@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const MyProjects = () =>
+const MyProjects = (props) =>
 {
   return(
     <div>
-      <button>My Projects</button>
+      <button onClick={props.switchDashboardComponents.bind(this, 'My-Projects')} >My Projects</button>
     </div>
   )
 }

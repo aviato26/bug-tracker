@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const UserProfile = () =>
+const UserProfile = (props) =>
 {
   return(
     <div>
-      <button>User Profile</button>
+      <button onClick={props.switchDashboardComponents.bind(this, 'User-Profile')} >User Profile</button>
     </div>
   )
 }

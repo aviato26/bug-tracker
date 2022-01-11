@@ -7,13 +7,13 @@ import ManageRoleAssignmentMain from './ManageRoleAssignment/manageRoleAssignmen
 
 const MainHomePage = (props) =>
 {
-  /* <DashBoardMain tickets={props.ticket}/> */
-    /* <ManageRoleAssignmentMain users={props.users}/> */
   return(
     <div className='container'>
-      <MainSideBar />
+      <MainSideBar switchDashboardComponents={props.switchDashboardComponents}/>
       <MainHomePageHeader />
-      <DashBoardMain tickets={props.ticket}/>
+      
+      {props.currentDashboardComponent === 'Dashboard-Home' && <DashBoardMain tickets={props.ticket}/>}
+      {props.currentDashboardComponent === 'Manage-Role-Assignment' && <ManageRoleAssignmentMain users={props.users}/>}
     </div>
   );
 }

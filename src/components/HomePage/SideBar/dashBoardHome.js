@@ -1,11 +1,12 @@
 
 import React from 'react';
 
-const DashboardHome = () =>
+const DashboardHome = (props) =>
 {
   return(
+      /* bind props function to be able to pass 'Dashboard-Home' parameter back to the parent class */    
     <div>
-      <button>Dashboard Home</button>
+      <button onClick={props.switchDashboardComponents.bind(this, 'Dashboard-Home')}>Dashboard Home</button>
     </div>
   )
 }

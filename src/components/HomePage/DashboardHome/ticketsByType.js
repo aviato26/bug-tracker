@@ -70,9 +70,8 @@ const TicketsByType = (props) => {
   }
 
   let ticketType = [error, task, subTask];
-  //console.log(ticketType)
+
   data.datasets[0].data = ticketType;
-  console.log(data.datasets)
 
   return(
       <Doughnut options={options} data={data} />

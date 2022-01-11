@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const MyTickets = () =>
+const MyTickets = (props) =>
 {
   return(
     <div>
-      <button>My Tickets</button>
+      <button onClick={props.switchDashboardComponents.bind(this, 'My-Tickets')} >My Tickets</button>
     </div>
   )
 }
