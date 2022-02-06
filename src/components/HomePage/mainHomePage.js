@@ -11,7 +11,7 @@ const MainHomePage = (props) =>
     <div className='container'>
       <MainSideBar switchDashboardComponents={props.switchDashboardComponents}/>
       <MainHomePageHeader />
-      
+
       {props.currentDashboardComponent === 'Dashboard-Home' && <DashBoardMain tickets={props.ticket}/>}
       {props.currentDashboardComponent === 'Manage-Role-Assignment' && <ManageRoleAssignmentMain users={props.users}/>}
     </div>
