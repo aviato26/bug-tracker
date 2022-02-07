@@ -10,7 +10,7 @@ const ManageRoleAssignmentMain = (props) =>
   return(
     <div id='DashboardMain'>
       <div>
-        <Title />
+        <Title title={'asdf'}/>
         <UserSelection users={props.users}/>
         <AssignRole role={props.users}/>
       </div>

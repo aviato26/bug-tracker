@@ -5,7 +5,7 @@ const AssignRole = (props) =>
 {
   return(
     <div>
-      <p>Select the role to assign</p>
+      <p>Select the assign</p>
       <input list="roles" name="role" />
       <datalist id="roles">
         <option value="Admin" />
