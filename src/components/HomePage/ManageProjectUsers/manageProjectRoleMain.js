@@ -8,15 +8,14 @@ import './Styles/projectUserComponent.css';
 
 const ManageProjectRoleMain = (props) =>
 {
-  console.log(props)
   return(
     <div id='DashboardMain'>
       <div id="Project-Roles-Container">
-        <Title />      
+        <Title />
         <UserSelection users={props.users}/>
         <AssignRole projects={props.projects}/>
-        <button>Add To Project</button>
-        <button>Remove From Project</button>
+        <button className="project-roles-component-buttons" >Add To Project</button>
+        <button className="project-roles-component-buttons">Remove From Project</button>
       </div>
       <div>
         <ProjectsTable projects={props.projects}/>
