@@ -6,13 +6,11 @@ const AssignRole = (props) =>
   return(
     <div>
       <p>Select the assign</p>
-      <input list="roles" name="role" />
-      <datalist id="roles">
-        <option value="Admin" />
-        <option value="Developer" />
-        <option value="Demo" />
-      </datalist>
-      <input type="submit" />
+      <select required id="roles" onChange={(e) => props.updateCurrentRole(e.target.value)} >
+        <option value="Admin">Admin</option>
+        <option value="Developer">Developer</option>
+        <option value="Demo">Demo</option>
+      </select>
     </div>
   )
 }
