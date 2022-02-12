@@ -1,5 +1,5 @@
 
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter , Route, Routes} from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 import Signin from './components/Signin/signin.js';
@@ -30,19 +30,36 @@ const App = () => {
 
   const projects =
     [
-      { ProjectsName: 'P1', UserNames: [...users].map(users => users.UserName)},
-      { ProjectsName: 'P2', UserNames: [...users].map(users => users.UserName)},
-      { ProjectsName: 'P3', UserNames: [...users].map(users => users.UserName)},
+      { ProjectsName: 'P1', UserNames: ['me', 'ted', 'franklin', 'jackson'] },
+      { ProjectsName: 'P2', UserNames: ['me', 'ted', 'jackson', 'jed']},
+      { ProjectsName: 'P3', UserNames: ['dylan', 'bruce', 'jasper']},
     ]
 
   // state and function to switch the home page components in the side bar
   const [currentDashBoardComponent, switchDashboardComponents] = useState('Dashboard-Home');
 
+  const [usersList, updateUsersListState] = useState(users);
+
+  const [projectsList, updateUsersInProjects] = useState(projects);
+  //const [projectsList, updateUsersInProjects] = useState(projects.map(project => project.UserNames.map(users => users)));
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainHomePage ticket={tickets} users={users} switchDashboardComponents={switchDashboardComponents} currentDashboardComponent={currentDashBoardComponent} projects={projects} />} />
+        <Route path="/"
+          element=
+          {
+            <MainHomePage
+              ticket={tickets}
+              users={usersList}
+              switchDashboardComponents={switchDashboardComponents}
+              currentDashboardComponent={currentDashBoardComponent}
+              projects={projects}
+              updateUsersListState={updateUsersListState}
+              updateUsersInProjects={updateUsersInProjects}
+            />
+          }
+        />
         <Route path="/" element={<Signin />} />
       </Routes>
     </BrowserRouter>
