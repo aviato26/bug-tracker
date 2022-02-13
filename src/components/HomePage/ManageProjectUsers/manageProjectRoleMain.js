@@ -1,5 +1,5 @@
 
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import Title from './title.js';
 import UserSelection from './userSelection.js';
 import AssignRole from './assignRole.js';
@@ -9,7 +9,7 @@ import './Styles/projectUserComponent.css';
 const ManageProjectRoleMain = (props) =>
 {
 
-  const [currentUser, updateCurrentUser] = useState(() => '');
+  const [currentUser, updateCurrentUser] = useState(() => ``);
   const [currentProject, updateCurrentProject] = useState(() => 'P1');
   const [listOfProjects, updateListOfProjects] = useState(() => props.projects);
 
@@ -31,7 +31,7 @@ const ManageProjectRoleMain = (props) =>
             project.UserNames.splice(userIndex, 1);
           }
           // check if user pushes the add to project button and check if currently selected user is in project users list, if not push user to the project user list
-          else if(userIndex < 0 && action === 'Add To Project'){
+          else if(userIndex < 0 && action === 'Add To Project' && currentUser !== ''){
             project.UserNames.push(currentUser);
           }
 
