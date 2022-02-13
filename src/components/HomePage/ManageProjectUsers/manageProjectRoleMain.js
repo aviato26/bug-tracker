@@ -8,37 +8,39 @@ import './Styles/projectUserComponent.css';
 
 const ManageProjectRoleMain = (props) =>
 {
+
   const [currentUser, updateCurrentUser] = useState(() => '');
   const [currentProject, updateCurrentProject] = useState(() => 'P1');
-  //console.log(props)
-  let filteredProjects = (props, action) => {
+  const [listOfProjects, updateListOfProjects] = useState(() => props.projects);
+
+  let filteredProjects = (action) => {
 
     let projIndex;
     let userIndex;
-    //props.updateUsersInProjects(props.projects[2])
-    //console.log(props)
-    return props.projects.map((project, projectIndex) => {
+
+    let updatedList = listOfProjects.map((project, projectIndex) => {
+      // check if any projects match the current project in select list
         if(project.ProjectsName === currentProject){
-          // saving current projects index
-          userIndex = project.UserNames.filter(user => user !== currentUser);
-          project.UserNames = userIndex;
-          //console.log(project)
+
+          // if a project matches, we will check the current user selected against the projects current users
+          userIndex = project.UserNames.indexOf(currentUser);
+
+          if(userIndex >= 0 && action === 'Remove From Project'){
+
+            // if a user is found we will remove the user with the splice method
+            project.UserNames.splice(userIndex, 1);
+          }
+          // check if user pushes the add to project button and check if currently selected user is in project users list, if not push user to the project user list
+          else if(userIndex < 0 && action === 'Add To Project'){
+            project.UserNames.push(currentUser);
+          }
+
         }
-        return project
+          return project;
       })
 
-      /*.UserNames.map((users, userIndex) => {
-        if(users === currentUser){
-          props.projects[projIndex].UserNames.splice(userIndex, 1);
-          //users.splice(userIndex, 0);
-          //props.projects[projIndex].UserNames);
-          //console.log(props)
-          return props.projects[projIndex];
-        }
-          return props.projects[projIndex];
-      });
-      */
-    //console.log(props.projects[projIndex].UserNames)
+      updateListOfProjects(updatedList);
+
   }
 
   return(
@@ -47,11 +49,11 @@ const ManageProjectRoleMain = (props) =>
         <Title />
         <UserSelection users={props.users} updateCurrentUser={updateCurrentUser} />
         <AssignRole projects={props.projects} updateCurrentProject={updateCurrentProject} />
-        <button className="project-roles-component-buttons" >Add To Project</button>
-        <button onClick={() => props.updateUsersInProjects(filteredProjects(props, 'Remove-User'))} className="project-roles-component-buttons">Remove From Project</button>
+        <button onClick={(e) => filteredProjects(e.target.innerHTML)} className="project-roles-component-buttons" >Add To Project</button>
+        <button onClick={(e) => filteredProjects(e.target.innerHTML)} className="project-roles-component-buttons">Remove From Project</button>
       </div>
       <div>
-        <ProjectsTable projects={props.projects}/>
+        <ProjectsTable projects={listOfProjects}/>
       </div>
     </div>
   )

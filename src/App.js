@@ -40,9 +40,6 @@ const App = () => {
 
   const [usersList, updateUsersListState] = useState(users);
 
-  const [projectsList, updateUsersInProjects] = useState(projects);
-  //const [projectsList, updateUsersInProjects] = useState(projects.map(project => project.UserNames.map(users => users)));
-
   return (
     <BrowserRouter>
       <Routes>
@@ -56,7 +53,6 @@ const App = () => {
               currentDashboardComponent={currentDashBoardComponent}
               projects={projects}
               updateUsersListState={updateUsersListState}
-              updateUsersInProjects={updateUsersInProjects}
             />
           }
         />

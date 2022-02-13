@@ -14,7 +14,7 @@ const MainHomePage = (props) =>
       <MainHomePageHeader />
       {props.currentDashboardComponent === 'Dashboard-Home' && <DashBoardMain tickets={props.ticket}/>}
       {props.currentDashboardComponent === 'Manage-Role-Assignment' && <ManageRoleAssignmentMain users={props.users} updateUsersListState={props.updateUsersListState}/>}
-      {props.currentDashboardComponent === 'Manage-Project-Users' && <ManageProjectRoleMain projects={props.projects} users={props.users} updateUsersInProjects={props.updateUsersInProjects}/>}
+      {props.currentDashboardComponent === 'Manage-Project-Users' && <ManageProjectRoleMain projects={props.projects} users={props.users} />}
     </div>
   );
 }

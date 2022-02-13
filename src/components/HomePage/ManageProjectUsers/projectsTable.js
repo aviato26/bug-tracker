@@ -3,6 +3,7 @@ import React from 'react';
 
 const ProjectsTable = (props) =>
 {
+  //console.log(props)
   return(
     <div>
       <table>
