@@ -1,0 +1,10 @@
+
+#My-Projects-Component{
+  grid-column: 2 / 5;
+  text-align: center;
+}
+
+.My-Projects-Component-li:hover{
+  color: blue;
+  cursor: pointer;
+}
