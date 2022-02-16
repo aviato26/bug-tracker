@@ -6,7 +6,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const data = {
-  labels: ['Error', 'Task', 'Sub-Task'],
+  labels: ['Error', 'Task', 'Other'],
   datasets: [
     {
       label: '# of Votes',
@@ -63,7 +63,7 @@ const TicketsByType = (props) => {
     {
       task += 1;
     }
-    else if(props.tickets[i].type === 'Sub-Task')
+    else if(props.tickets[i].type === 'Other')
     {
       subTask += 1;
     }
