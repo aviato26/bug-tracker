@@ -8,12 +8,14 @@ import './App.css';
 
 const App = () => {
 
+  const [ currentUser, changeCurrentUser] = useState('Admin');
+
   const tickets =
     [
-      { project: 'P1', projectTitle:'test 1', priority: 'High', status: 'Open', type: 'Error', AssignedBy: 'me', AssignedTo: 'Stan', Description: 'some sort of err', created: new Date() },
-      { project: 'P1', projectTitle:'test 2', priority: 'High', status: 'Open', type: 'Error', AssignedBy: 'ted', AssignedTo: 'Stan', Description: 'another sort of err', created: new Date() },
-      { project: 'P2', projectTitle:'test 3', priority: 'High', status: 'In-Progress', type: 'Task', AssignedBy: 'me', AssignedTo: 'Stan', Description: 'a feature to be implemented', created: new Date() },
-      { project: 'P3', projectTitle:'test 4', priority: 'Low', status: 'New', type: 'Other', AssignedBy: 'jackson', AssignedTo: 'Mick', Description: 'request for help navigating project', created: new Date() }
+      { project: 'P1', ticketTitle:'test 1', priority: 'High', status: 'Open', type: 'Error', assignedBy: 'me', assignedTo: 'jackson', description: 'some sort of err', created: new Date() },
+      { project: 'P1', ticketTitle:'test 2', priority: 'High', status: 'Open', type: 'Error', assignedBy: 'ted', assignedTo: 'me', description: 'another sort of err', created: new Date() },
+      { project: 'P2', ticketTitle:'test 3', priority: 'High', status: 'In-Progress', type: 'Task', assignedBy: 'me', assignedTo: 'ted', description: 'a feature to be implemented', created: new Date() },
+      { project: 'P3', ticketTitle:'test 4', priority: 'Low', status: 'New', type: 'Other', assignedBy: 'jackson', assignedTo: 'dylan', description: 'request for help navigating project', created: new Date() }
     ];
 
   const users =
@@ -42,6 +44,8 @@ const App = () => {
 
   const [projectsList, updateProjectsList] = useState(() => projects);
 
+  const [ticketList, updateTicketList] = useState(() => tickets);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -49,13 +53,15 @@ const App = () => {
           element=
           {
             <MainHomePage
-              ticket={tickets}
+              ticket={ticketList}
               users={usersList}
               switchDashboardComponents={switchDashboardComponents}
               currentDashboardComponent={currentDashBoardComponent}
               projects={projectsList}
               updateUsersListState={updateUsersListState}
               updateProjectsList={updateProjectsList}
+              updateTicketList={updateTicketList}
+              currentUser={currentUser}
             />
           }
         />
